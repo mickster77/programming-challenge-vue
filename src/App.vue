@@ -1,32 +1,50 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="./assets/NR-Logo.jpeg"
+          transition="scale-transition"
+          width="40"
+        />
+        <span class="mr-2, headline">NR Programming Challenge</span>
+      </div>
+
+      <v-spacer></v-spacer>
+      <!-- <v-btn color="warning" v-if="user" @click="logout">signOut</v-btn> -->
+      <v-btn color="warning" class="mx-2">signOut</v-btn>
+
+      <v-btn color="warning" href="https://en.wikipedia.org/wiki/Naval_Reactors" target="_blank">
+        <span class="m-2">Some Link</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-content>
+      <!-- <HelloWorld /> -->
+      <Sandbox />
+    </v-content>
+    <v-footer class="mr-2, headline" app color="primary" dark>Footer</v-footer>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// import HelloWorld from "./components/HelloWorld";
+import Sandbox from "./components/Sandbox";
 
-#nav {
-  padding: 30px;
+export default {
+  name: "App",
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  components: {
+    // HelloWorld,
+    Sandbox
+  },
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+  data: () => ({
+    //
+  })
+};
+</script>
