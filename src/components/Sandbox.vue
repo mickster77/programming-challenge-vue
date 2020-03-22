@@ -7,10 +7,11 @@
     </v-row>
     <v-row green>
       <v-col :cols="12" :lg="2">
-        <v-card color="primary" dark>
+        <!-- <v-card color="primary" dark>
           <v-card-title>Leader Board</v-card-title>
           <v-card-text>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi sapiente doloribus, voluptatum tenetur alias culpa tempore dignissimos minus possimus neque tempora maiores quia. Suscipit veritatis ipsum, illo doloremque perferendis magnam?</v-card-text>
-        </v-card>
+        </v-card>-->
+        <Leaderboard />
       </v-col>
 
       <v-col cols="12" :lg="8">
@@ -27,6 +28,7 @@
           <v-card-text>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam dignissimos dolores ullam quasi. Adipisci, ipsam alias officia dolor perferendis saepe dolore explicabo fugit expedita magnam corrupti praesentium, sint eligendi laboriosam.</v-card-text>
         </v-card>
       </v-col>
+
       <v-col :cols="12" :lg="2">
         <v-card color="primary" dark>
           <v-card-title>Links?</v-card-title>
@@ -38,7 +40,10 @@
 </template>
 
 <script>
+import Leaderboard from "@/components/subcomponents/Leaderboard";
+
 export default {
+  components: { Leaderboard },
   name: "HelloWorld",
 
   data: () => ({})
