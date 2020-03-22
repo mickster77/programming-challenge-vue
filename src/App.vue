@@ -10,17 +10,31 @@
           transition="scale-transition"
           width="40"
         />
-        <span class="mr-2, headline">NR Programming Challenge</span>
+        <v-toolbar-title>NR Programming Challenge</v-toolbar-title>
       </div>
 
       <v-spacer></v-spacer>
       <!-- <v-btn color="warning" v-if="user" @click="logout">signOut</v-btn> -->
-      <v-btn color="warning" class="mx-2">signOut</v-btn>
-
-      <v-btn color="warning" href="https://en.wikipedia.org/wiki/Naval_Reactors" target="_blank">
+      <v-btn color="warning" class="mx-2 hidden-md-and-down">signOut</v-btn>
+      <!-- <v-btn color="warning" href="https://en.wikipedia.org/wiki/Naval_Reactors" target="_blank">
         <span class="m-2">Some NR Link</span>
         <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      </v-btn>-->
+
+      <v-menu bottom left>
+        <template v-slot:activator="{ on }">
+          <v-btn icon color="yellow" v-on="on" class="hidden-lg-and-up">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item>
+            <v-list-item-title>Signout</v-list-item-title>
+            <!-- <v-list-item-action>Test</v-list-item-action> -->
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
 
     <v-content>
