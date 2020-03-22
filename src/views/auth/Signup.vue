@@ -16,6 +16,9 @@
             <v-text-field label="UserName" type="text" v-model="userName"></v-text-field>
           </v-flex>
           <v-flex xs12>
+            <v-text-field label="Name" type="text" v-model="name"></v-text-field>
+          </v-flex>
+          <v-flex xs12>
             <p class="red--text feedback" v-if="feedback">{{feedback}}</p>
           </v-flex>
 
@@ -48,7 +51,8 @@ export default {
       password: null,
       userName: null,
       feedback: null,
-      slug: null
+      slug: null,
+      name: null
     };
   },
   methods: {
@@ -65,7 +69,10 @@ export default {
         });
 
         // check is the username is taken
-        var docRef = db.collection("UserNames").doc(this.slug);
+        var docRef = db
+          .firestore()
+          .collection("Users")
+          .doc(this.slug);
         var docExisits = false;
         docRef.get().then(function(doc) {
           if (doc.exists) {
@@ -73,7 +80,7 @@ export default {
             docExisits = true;
           } else {
             // doc.data() will be undefined in this case
-            alert("This username is available!!");
+            // alert("This username is available!!");
             docExisits = false;
           }
         });
@@ -90,21 +97,24 @@ export default {
               }
             )
             .then(cred => {
-              cred.user.updateProfile({
-                displayName: this.slug,
-                email: this.email
-              });
+              // cred.user.updateProfile({
+              //   displayName: this.slug,
+              //   email: this.email
+              // });
               return db
-                .collection("UserNames")
+                .firestore()
+                .collection("Users")
                 .doc(cred.user.uid)
                 .set({
-                  userName: this.slug,
-                  email: cred.user.email
+                  user_name: this.slug,
+                  email: cred.user.email,
+                  id: cred.user.uid,
+                  name: this.name
                 });
             })
             .then(() => {
               this.$router.push({
-                name: "Tidbits",
+                name: "Home",
                 params: { uid: firebase.auth().currentUser.uid }
               });
             });
