@@ -18,7 +18,7 @@
       <v-btn color="warning" class="mx-2">signOut</v-btn>
 
       <v-btn color="warning" href="https://en.wikipedia.org/wiki/Naval_Reactors" target="_blank">
-        <span class="m-2">Some Link</span>
+        <span class="m-2">Some NR Link</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
