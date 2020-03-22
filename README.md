@@ -1,20 +1,19 @@
 # programming-challenge-vue
 
+## To collaborate
 
-## Project setup
-```
-npm install
-```
+1. clone the project to a local directory.  
+2. In that directory, run <code>npm install</code>
+3. run <code>npm run serve</code> to launch a dev server
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## To build
 
-### Compiles and minifies for production
-```
-npm run build
-```
+run <code>npm run build</code>
+
+> For vue, the build dir is *dist*
+
+## To deploy to firebase
+<code>firebase deploy</code>
 
 ### Lints and fixes files
 ```
