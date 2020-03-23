@@ -6,7 +6,7 @@
       <!-- <Sandbox /> -->
       <router-view></router-view>
     </v-content>
-    <v-footer class="mr-2, headline" app color="primary" dark>Footer</v-footer>
+    <v-footer class="mr-2" app color="primary" dark>Website created by Black, Post, & Fitzgerald</v-footer>
   </v-app>
 </template>
 
