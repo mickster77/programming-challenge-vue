@@ -1,10 +1,10 @@
 <template>
   <v-container fluid>
     <v-row class="text-center">
-      <v-col cols="12">
+<!--       <v-col cols="12">
         <h1>Sandbox</h1>
       </v-col>
-    </v-row>
+ -->    </v-row>
     <v-row green>
       <v-col :cols="12" :lg="3">
         <!-- <v-card color="primary" dark>
