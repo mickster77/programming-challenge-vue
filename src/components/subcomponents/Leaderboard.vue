@@ -24,7 +24,6 @@
 
 export default {
   data: () => ({
-    item : 2,
     items: [
       {
         name : "Joe Post",

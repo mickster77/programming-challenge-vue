@@ -6,7 +6,7 @@
       </v-col>
     </v-row>
     <v-row green>
-      <v-col :cols="12" :lg="2">
+      <v-col :cols="12" :lg="3">
         <!-- <v-card color="primary" dark>
           <v-card-title>Leader Board</v-card-title>
           <v-card-text>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi sapiente doloribus, voluptatum tenetur alias culpa tempore dignissimos minus possimus neque tempora maiores quia. Suscipit veritatis ipsum, illo doloremque perferendis magnam?</v-card-text>
@@ -14,7 +14,7 @@
         <Leaderboard />
       </v-col>
 
-      <v-col cols="12" :lg="8">
+      <v-col cols="12" :lg="9">
         <v-card color="teal" class="md-2">
           <v-card-title>Challenge 1</v-card-title>
           <v-card-text>
@@ -29,13 +29,13 @@
         </v-card>
       </v-col>
 
-      <v-col :cols="12" :lg="2">
+<!--       <v-col :cols="12" :lg="2">
         <v-card color="primary" dark>
           <v-card-title>Links?</v-card-title>
           <v-card-text>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi sapiente doloribus, voluptatum tenetur alias culpa tempore dignissimos minus possimus neque tempora maiores quia. Suscipit veritatis ipsum, illo doloremque perferendis magnam?</v-card-text>
         </v-card>
       </v-col>
-    </v-row>
+ -->    </v-row>
   </v-container>
 </template>
 
