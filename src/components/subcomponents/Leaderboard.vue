@@ -1,9 +1,20 @@
 <template>
   <div>
     <v-card color="primary" dark>
-      <v-card-title>Leader Board</v-card-title>
-      <v-card-text>{{leader}}</v-card-text>
-      <v-card-text>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi sapiente doloribus, voluptatum tenetur alias culpa tempore dignissimos minus possimus neque tempora maiores quia. Suscipit veritatis ipsum, illo doloremque perferendis magnam?</v-card-text>
+      <v-card-title>Leaderboard</v-card-title>
+      <v-list
+        :disabled="disabled"
+        :two-line="twoLine"
+        color="primary" dark>
+          <v-list-item
+            v-for="(item, i) in items"
+            :key="i">
+            <v-list-item-content>
+              <v-list-item-title v-html="(i+1) + '. ' + item.name"></v-list-item-title>
+              <v-list-item-subtitle v-html="'Score: ' + item.score"></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+      </v-list>
     </v-card>
   </div>
 </template>
@@ -12,11 +23,24 @@
 // import firebase from "firebase";
 
 export default {
-  data() {
-    return {
-      leader: "JoePost"
-    };
-  }
+  data: () => ({
+    item : 2,
+    items: [
+      {
+        name : "Joe Post",
+        score : 10
+      },
+      {
+        name : "Mike Black",
+        score : 9
+      },
+      {
+        name : "Sean Fitzgerald",
+        score : 8
+      }
+
+    ],
+  })
 };
 </script>
 
