@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
+import Admin from '../views/Admin'
 import firebase from 'firebase'
 
 
@@ -34,6 +35,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
   },
 ]
 
