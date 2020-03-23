@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card color="teal" class="md-2" v-for="(challenge, index) in Challenges" :key="index">
+    <v-card color="teal" class="ma-2" v-for="(challenge, index) in Challenges" :key="index">
       <v-card-title>{{challenge.name}}</v-card-title>
       <v-card-text>
         <p>{{challenge.prompt}}</p>

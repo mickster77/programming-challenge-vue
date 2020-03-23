@@ -5,7 +5,7 @@
         alt="Vuetify Logo"
         class="shrink mr-2"
         contain
-        src="../assets/NR-Logo.jpeg"
+        src="../assets/08K-logo.png"
         transition="scale-transition"
         width="40"
       />
