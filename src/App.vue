@@ -6,7 +6,11 @@
       <!-- <Sandbox /> -->
       <router-view></router-view>
     </v-content>
-    <v-footer class="mr-2" app color="primary" dark>Website created by Black, Post, & Fitzgerald</v-footer>
+    <v-footer class="mr-2" app color="primary" dark>
+      <span>Website created by Black, Post, & Fitzgerald</span>
+      <v-spacer></v-spacer>
+      <v-btn @click="changeTheme()" color="secondary">Change Theme</v-btn>
+    </v-footer>
   </v-app>
 </template>
 
@@ -24,6 +28,13 @@ export default {
     NavBar
     // HelloWorld,
     // Sandbox
+  },
+  methods: {
+    changeTheme() {
+      if (this.$vuetify.theme.dark == true) {
+        this.$vuetify.theme.dark = false;
+      } else this.$vuetify.theme.dark = true;
+    }
   }
 };
 </script>

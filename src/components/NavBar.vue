@@ -11,11 +11,11 @@
       />
       <v-toolbar-title>NR Programming Challenge</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn class="warning mx-2 hidden-md-and-down" v-if="user" @click="logout">signOut</v-btn>
+      <v-btn class="mx-2 hidden-md-and-down" color="secondary" v-if="user" @click="logout">signOut</v-btn>
 
       <v-menu bottom left>
         <template v-slot:activator="{ on }">
-          <v-btn icon color="yellow" v-on="on" class="hidden-lg-and-up">
+          <v-btn icon color="secondary" v-on="on" class="hidden-lg-and-up">
             <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
         </template>

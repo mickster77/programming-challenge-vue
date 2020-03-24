@@ -1,10 +1,11 @@
 <template>
   <div>
     <v-card
-      color="teal"
+      color="primary"
       class="mb-3"
       v-for="(challenge, index) in desendingChallenges"
       :key="index"
+      dark
     >
       <v-card-title>{{challenge.name}}</v-card-title>
       <v-card-text>
