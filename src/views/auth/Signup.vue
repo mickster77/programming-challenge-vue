@@ -97,10 +97,10 @@ export default {
               }
             )
             .then(cred => {
-              // cred.user.updateProfile({
-              //   displayName: this.slug,
-              //   email: this.email
-              // });
+              cred.user.updateProfile({
+                displayName: this.slug,
+                email: this.email
+              });
               return db
                 .firestore()
                 .collection("Users")
