@@ -14,8 +14,11 @@
       </v-card-text>
       <v-card-text>Release Date: {{challenge.release_date}}</v-card-text>
       <v-card-text>Due Date: {{challenge.due_date}}</v-card-text>
-      <!-- <v-file-input show-size label="File input"></v-file-input> -->
+      <v-card-text>
+        <v-textarea filled label="Paste code here:" v-model="code"></v-textarea>
+      </v-card-text>
       <SubmissionInput />
+      <v-btn @click="submit(challenge.id)" v-show="!loading">Submit</v-btn>
     </v-card>
   </div>
 </template>
@@ -29,7 +32,9 @@ export default {
   components: { SubmissionInput },
   data() {
     return {
-      Challenges: []
+      Challenges: [],
+      code: null,
+      loading: false
     };
   },
   created() {
@@ -51,6 +56,35 @@ export default {
     desendingChallenges() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       return this.Challenges.reverse();
+    }
+  },
+  methods: {
+    submit(id) {
+      this.loading = true;
+      // let user = this.$store.state.user.email;
+      // let user = this.$store.getters.displayName;
+      // alert(user);
+      let docName = id.concat(" - ", this.$store.getters.userDisplayName);
+      alert(docName);
+      db.firestore()
+        .collection("Submissions")
+        .doc(docName)
+        .set({
+          challenge_id: id,
+          code: this.code,
+          submit_date: Date.now(),
+          uid: this.$store.getters.userID,
+          userName: this.$store.getters.userDisplayName
+        })
+        .then(() => {
+          this.loading = false;
+          alert("submitted");
+          this.code = null;
+        })
+        .catch(function(error) {
+          this.loading = false;
+          alert(error.message);
+        });
     }
   }
 };

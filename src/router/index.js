@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
 import Admin from '../views/Admin'
 import firebase from 'firebase'
+import Submissions from '../views/Submissions.vue'
+
 
 
 Vue.use(VueRouter)
@@ -41,6 +44,14 @@ const routes = [
     name: 'Admin',
     component: Admin,
   },
+  {
+    path: '/submissions',
+    name: 'Submissions',
+    component: Submissions,
+    meta: {
+      requiresAuth: true,
+    },
+  }
 ]
 
 const router = new VueRouter({
