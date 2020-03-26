@@ -3,42 +3,12 @@
     <v-container fluid>
       <v-row>
         <v-col cols="12">
-          <v-card color="primary" dark>
-            <v-card-text>
-              <h1>New Challenge Submission</h1>
-              <v-row>
-                <v-col cols="12">
-                  <v-text-field label="Name" v-model="name"></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="6">
-                  <v-text-field label="Due Date" type="date" v-model="due_date"></v-text-field>
-                </v-col>
-                <v-col cols="6">
-                  <v-text-field label="Release Date" type="date" v-model="release_date"></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12">
-                  <v-textarea label="Prompt" v-model="prompt"></v-textarea>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12">
-                  <v-textarea label="Grading Code" v-model="grading_code"></v-textarea>
-                </v-col>
-              </v-row>
-            </v-card-text>
-            <v-btn @click="submitChallenge" class="ma-2" color="warning">Submit</v-btn>
-            <v-row v-if="feedback">
-              <v-col cols="12">
-                <v-card-text>
-                  <p class="text-uppercase font-weight-bold white--text">{{feedback}}</p>
-                </v-card-text>
-              </v-col>
-            </v-row>
-          </v-card>
+          <NewChallenge />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <ModChallenge />
         </v-col>
       </v-row>
       <v-row>
@@ -56,8 +26,11 @@
 
 <script>
 import db from "@/firebase/init";
+import NewChallenge from "@/components//NewChallenge";
+import ModChallenge from "@/components//ModChallenge";
 
 export default {
+  components: { NewChallenge, ModChallenge },
   data() {
     return {
       due_date: null,
