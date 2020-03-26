@@ -7,6 +7,7 @@ import Signup from '../views/auth/Signup'
 import Admin from '../views/Admin'
 import firebase from 'firebase'
 import Submissions from '../views/Submissions.vue'
+import Leaderboard from '../views/Leaderboard.vue'
 
 
 
@@ -48,6 +49,14 @@ const routes = [
     path: '/submissions',
     name: 'Submissions',
     component: Submissions,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/leaderboard',
+    name: 'Leaderboard',
+    component: Leaderboard,
     meta: {
       requiresAuth: true,
     },
