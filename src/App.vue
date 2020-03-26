@@ -6,7 +6,7 @@
       <!-- <Sandbox /> -->
       <router-view></router-view>
     </v-content>
-    <v-footer class="mr-2" app color="primary" dark>
+    <v-footer class="mu-2" app color="primary" dark>
       <span>Website created by Black, Post, & Fitzgerald</span>
       <v-spacer></v-spacer>
       <v-btn @click="changeTheme()" color="secondary">Change Theme</v-btn>
