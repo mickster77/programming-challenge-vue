@@ -8,6 +8,8 @@ import Admin from '../views/Admin'
 import firebase from 'firebase'
 import Submissions from '../views/Submissions.vue'
 import Leaderboard from '../views/Leaderboard.vue'
+import Sandbox from '../views/Sandbox.vue'
+
 
 
 
@@ -15,7 +17,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home,
     meta: {
@@ -54,9 +56,17 @@ const routes = [
     },
   },
   {
-    path: '/leaderboard',
+    path: '/',
     name: 'Leaderboard',
     component: Leaderboard,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/sandbox',
+    name: 'Sandbox',
+    component: Sandbox,
     meta: {
       requiresAuth: true,
     },

@@ -15,6 +15,12 @@
                   <v-card-text>
                     <v-textarea filled label="Paste code here:" v-model="code"></v-textarea>
                   </v-card-text>
+                  <v-btn
+                    @click="submit(challenge.id)"
+                    v-show="!loading"
+                    color="primary"
+                    class="ma-3"
+                  >Submit</v-btn>
                 </v-card>
               </v-col>
               <v-col cols="12" md="3">
@@ -50,24 +56,37 @@ export default {
   data() {
     return {
       Challenges: [],
-      Submissions: [],
+      //   Submissions: [],
       loading: false,
       code: null
     };
   },
   methods: {
-    // deleteSubmission(id) {
-    //   this.loading = true;
-    //   firebase
-    //     .firestore()
-    //     .collection("Submissions") // Gets the smoothie collection
-    //     .doc(id) // Gets the doc of a specific id
-    //     .delete() // This deletes it from the database
-    //     .then(() => {
-    //       alert("deleted");
-    //       this.loading = false;
-    //     });
-    // }
+    submit(id) {
+      this.loading = true;
+      let docName = id.concat(" - ", this.$store.getters.userDisplayName);
+      //   alert(docName);
+      firebase
+        .firestore()
+        .collection("Submissions")
+        .doc(docName)
+        .set({
+          challenge_id: id,
+          code: this.code,
+          submit_date: Date.now(),
+          uid: this.$store.getters.userID,
+          userName: this.$store.getters.userDisplayName
+        })
+        .then(() => {
+          this.loading = false;
+          //   alert("submitted");
+          this.code = null;
+        })
+        .catch(function(error) {
+          this.loading = false;
+          alert(error.message);
+        });
+    }
   },
   created() {
     firebase
@@ -84,18 +103,18 @@ export default {
         });
       });
 
-    firebase
-      .firestore()
-      .collection("Submissions")
-      .onSnapshot(snapshot => {
-        this.Submissions = [];
-        snapshot.forEach(doc => {
-          let submission = doc.data();
-          let id = doc.id;
-          submission.id = id;
-          this.Submissions.push(submission);
-        });
-      });
+    //   firebase
+    //     .firestore()
+    //     .collection("Submissions")
+    //     .onSnapshot(snapshot => {
+    //       this.Submissions = [];
+    //       snapshot.forEach(doc => {
+    //         let submission = doc.data();
+    //         let id = doc.id;
+    //         submission.id = id;
+    //         this.Submissions.push(submission);
+    //       });
+    //     });
   }
 };
 </script>
