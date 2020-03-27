@@ -1,10 +1,16 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <v-row>
       <v-col cols="12">
-        <v-card color="primary" class="mb-3" v-for="(challenge, index) in Challenges" :key="index">
+        <v-card
+          color="primary"
+          dark
+          class="mb-3"
+          v-for="(challenge, index) in Challenges"
+          :key="index"
+        >
           <v-card-title>{{challenge.name}}</v-card-title>
-          <v-container fluid>
+          <v-container>
             <v-row>
               <v-col cols="12" md="9">
                 <v-card dark>
@@ -13,7 +19,7 @@
                   <v-card-text>Release Date: {{challenge.release_date}}</v-card-text>
                   <v-card-text>Due Date: {{challenge.due_date}}</v-card-text>
                   <v-card-text>
-                    <v-textarea filled label="Paste code here:" v-model="code"></v-textarea>
+                    <v-textarea filled label="Paste code here" v-model="code"></v-textarea>
                   </v-card-text>
                   <v-btn
                     @click="submit(challenge.id)"
@@ -25,19 +31,9 @@
               </v-col>
               <v-col cols="12" md="3">
                 <NewLeaderboard :challengeID="challenge.id"></NewLeaderboard>
-                <!-- <TodoComponent :name="todoList.title" v-on:send="updateTime" /> -->
               </v-col>
             </v-row>
           </v-container>
-
-          <!-- <v-btn @click="submit(challenge.id)" v-show="!loading">Submit</v-btn> -->
-          <!-- <v-card-text>Username: {{submission.userName}}</v-card-text> -->
-          <!-- <v-card-text>UID: {{submission.uid}}</v-card-text> -->
-          <!-- <v-card-text>Score: {{submission.score}}</v-card-text> -->
-          <!-- <v-card-text>Error: {{submission.error}}</v-card-text> -->
-
-          <!-- <v-card-text>Submit Date: {{submission.submit_date}}</v-card-text> -->
-          <!-- <v-btn @click="deleteSubmission(submission.id)" v-show="!loading">Delete</v-btn> -->
         </v-card>
       </v-col>
     </v-row>

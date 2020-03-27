@@ -11,7 +11,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="submission in Submissions" :key="submission.uid">
+          <!-- <tr v-for="submission in Submissions" :key="submission.uid"></tr> -->
+          <tr v-for="submission in sortedArray" :key="submission.uid">
             <td>{{ submission.userName }}</td>
             <td>{{ submission.score }}</td>
           </tr>
@@ -46,6 +47,14 @@ export default {
           }
         });
       });
+  },
+  computed: {
+    sortedArray() {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      return this.Submissions.sort((a, b) => {
+        return b.score - a.score;
+      });
+    }
   }
 };
 </script>

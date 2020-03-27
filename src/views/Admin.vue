@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container fluid>
+    <v-container>
       <v-row>
         <v-col cols="12">
           <NewChallenge />
@@ -14,9 +14,7 @@
       <v-row>
         <v-col cols="12">
           <v-card color="primary" dark>
-            <v-card-text>
-              <h1>Other Admin Stuff</h1>
-            </v-card-text>
+            <v-card-title>Other Admin Stuff</v-card-title>
           </v-card>
         </v-col>
       </v-row>
