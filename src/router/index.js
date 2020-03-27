@@ -1,14 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
 import Admin from '../views/Admin'
 import firebase from 'firebase'
 import Submissions from '../views/Submissions.vue'
 import Leaderboard from '../views/Leaderboard.vue'
-import Sandbox from '../views/Sandbox.vue'
 
 
 
@@ -24,14 +22,14 @@ const routes = [
       requiresAuth: true,
     },
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // },
   {
     path: '/signup',
     name: 'Signup',
@@ -46,6 +44,10 @@ const routes = [
     path: '/admin',
     name: 'Admin',
     component: Admin,
+    meta: {
+      requiresAuth: false,
+      requiresAdmin: true
+    },
   },
   {
     path: '/submissions',
@@ -63,14 +65,7 @@ const routes = [
       requiresAuth: true,
     },
   },
-  {
-    path: '/sandbox',
-    name: 'Sandbox',
-    component: Sandbox,
-    meta: {
-      requiresAuth: true,
-    },
-  }
+
 ]
 
 const router = new VueRouter({
@@ -80,6 +75,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+
   // check to see if route requres Auth
   if (to.matched.some(rec => rec.meta.requiresAuth)) {
 
@@ -97,6 +93,24 @@ router.beforeEach((to, from, next) => {
       alert('you need to be logged in to access this page')
       next({ name: 'Login' })
     }
+  } else if (to.matched.some(rec => rec.meta.requiresAdmin)) {
+    // alert("admin only...")
+    // let isAdmin = 
+    let user = firebase.auth().currentUser
+    if (user.displayName == "micksteradmin" || user.displayName == "mrplants" || user.displayName == "mgann" || user.displayName == "poster515") {
+      next()
+
+    } else {
+      alert('no no  no ...')
+      next({ name: 'Login' })
+    }
+
+    // if (isAdmin) {
+    //   next()
+    // } else {
+    //   alert('no no no,,, you need to be admin')
+    //   next({ name: 'Login' })
+    // }
   } else {
     // selected route does not require a user to be logged in, so send to disired route
     next()
