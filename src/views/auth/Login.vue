@@ -79,8 +79,8 @@ export default {
             //   .auth()
             //   .setPersistence(firebase.auth.Auth.Persistence.SESSION).then;
             this.$router.push({
-              name: "Home",
-              params: { uid: firebase.auth().currentUser.uid }
+              name: "Leaderboard"
+              // params: { uid: firebase.auth().currentUser.uid }
             });
           })
           .catch(err => {

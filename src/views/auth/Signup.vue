@@ -40,7 +40,6 @@
 <script>
 import slugify from "slugify";
 import firebase from "firebase";
-import db from "@/firebase/init";
 // import { log } from "util";
 
 export default {
@@ -52,7 +51,8 @@ export default {
       userName: null,
       feedback: null,
       slug: null,
-      name: null
+      name: null,
+      userNameTaken: false
     };
   },
   methods: {
@@ -69,59 +69,70 @@ export default {
         });
 
         // check is the username is taken
-        var docRef = db
+        var docRef = firebase
           .firestore()
-          .collection("Users")
+          .collection("User_Names")
           .doc(this.slug);
-        var docExisits = false;
-        docRef.get().then(function(doc) {
-          if (doc.exists) {
-            alert("this username is taken");
-            docExisits = true;
-          } else {
-            // doc.data() will be undefined in this case
-            // alert("This username is available!!");
-            docExisits = false;
-          }
-        });
-        if (!docExisits) {
-          // Esstablish user
-          firebase
-            .auth()
-            .createUserWithEmailAndPassword(this.email, this.password)
-            .catch(error =>
-              // Handle Errors here.
-              {
-                return (this.feedback = error.message);
-                // console.log(error.message);
-              }
-            )
-            .then(cred => {
-              cred.user.updateProfile({
-                displayName: this.slug,
-                email: this.email
-              });
-              return db
-                .firestore()
-                .collection("Users")
-                .doc(cred.user.uid)
-                .set({
-                  user_name: this.slug,
-                  email: cred.user.email,
-                  id: cred.user.uid,
-                  name: this.name
+        docRef
+          .get()
+          .then(doc => {
+            if (doc.exists) {
+              alert("this username is taken");
+              this.userNameTaken = true;
+            } else {
+              // doc.data() will be undefined in this case
+              alert("This username is available!!");
+              this.userNameTaken = false;
+            }
+          })
+          .then(() => {
+            if (!this.userNameTaken) {
+              // Establish user
+              firebase
+                .auth()
+                .createUserWithEmailAndPassword(this.email, this.password)
+                .catch(error =>
+                  // Handle Errors here.
+                  {
+                    return (this.feedback = error.message);
+                  }
+                )
+                .then(cred => {
+                  cred.user.updateProfile({
+                    displayName: this.slug,
+                    email: this.email
+                  });
+                  return firebase
+                    .firestore()
+                    .collection("Users")
+                    .doc(cred.user.uid)
+                    .set({
+                      user_name: this.slug,
+                      email: cred.user.email,
+                      id: cred.user.uid,
+                      name: this.name
+                    });
+                })
+                .then(() => {
+                  return firebase
+                    .firestore()
+                    .collection("User_Names")
+                    .doc(this.slug)
+                    .set({
+                      user_name: this.slug
+                    });
+                })
+                .then(() => {
+                  this.$router.push({
+                    name: "Leaderboard"
+                    // params: { uid: firebase.auth().currentUser.uid }
+                  });
                 });
-            })
-            .then(() => {
-              this.$router.push({
-                name: "Home",
-                params: { uid: firebase.auth().currentUser.uid }
-              });
-            });
-        } // end docExisits if
-      } // form validate if
-    } // end signup.
-  }
+            }
+          });
+      } // end docExisits if
+    } // form validate if
+  } // end signup.
 };
 </script>
 
