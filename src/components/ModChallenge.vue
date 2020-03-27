@@ -91,7 +91,7 @@ export default {
         .get()
         .then(doc => {
           if (doc.exists) {
-            console.log("Document data:", doc.data());
+            // console.log("Document data:", doc.data());
             let challenge = doc.data();
             this.name = challenge.name;
             this.due_date = challenge.due_date;
@@ -101,11 +101,12 @@ export default {
             this.grading_code = challenge.grading_code;
           } else {
             // doc.data() will be undefined in this case
-            console.log("No such document!");
+            // console.log("No such document!");
           }
         })
         .catch(function(error) {
-          console.log("Error getting document:", error);
+          // console.log("Error getting document:", error);
+          alert(error);
         });
     }
   }
