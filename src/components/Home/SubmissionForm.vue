@@ -73,18 +73,19 @@ export default {
       .get()
       .then(doc => {
         if (doc.exists) {
-          console.log("Document data:", doc.data());
+          // console.log("Document data:", doc.data());
           // this.Submissions = doc.data();
           this.prompt = doc.data().prompt;
           this.due_date = doc.data().due_date;
           this.release_date = doc.data().release_date;
         } else {
           // doc.data() will be undefined in this case
-          console.log("No such document!");
+          // console.log("No such document!");
         }
       })
       .catch(function(error) {
-        console.log("Error getting document:", error);
+        // console.log("Error getting document:", error);
+        alert(error);
       });
 
     let id = this.$props.challengeID;
@@ -117,11 +118,12 @@ export default {
           this.error = doc.data().error;
         } else {
           // doc.data() will be undefined in this case
-          console.log("No such document!");
+          // console.log("No such document!");
         }
       })
       .catch(function(error) {
-        console.log("Error getting document:", error);
+        // console.log("Error getting document:", error);
+        alert(error);
       });
   }
 };

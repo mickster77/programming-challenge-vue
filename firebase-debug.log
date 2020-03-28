@@ -1,0 +1,115 @@
+[debug] [2020-03-28T19:40:04.630Z] ----------------------------------------------------------------------
+[debug] [2020-03-28T19:40:04.638Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2020-03-28T19:40:04.640Z] CLI Version:   7.15.1
+[debug] [2020-03-28T19:40:04.640Z] Platform:      darwin
+[debug] [2020-03-28T19:40:04.640Z] Node Version:  v11.13.0
+[debug] [2020-03-28T19:40:04.646Z] Time:          Sat Mar 28 2020 15:40:04 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-03-28T19:40:04.648Z] ----------------------------------------------------------------------
+[debug] [2020-03-28T19:40:04.648Z] 
+[debug] [2020-03-28T19:40:04.682Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-28T19:40:04.687Z] > authorizing via signed-in user
+[debug] [2020-03-28T19:40:04.687Z] [iam] checking project nr-programming-challenge-460b8 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2020-03-28T19:40:04.692Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-03-28T19:40:04.692Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-03-28T19:40:04.899Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T19:40:04.942Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/nr-programming-challenge-460b8:testIamPermissions  
+
+[debug] [2020-03-28T19:40:05.121Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T19:40:05.125Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/nr-programming-challenge-460b8  
+ 
+[debug] [2020-03-28T19:40:05.371Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'nr-programming-challenge-460b8'...
+[info] 
+[info] i  deploying storage, firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2020-03-28T19:40:11.468Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/nr-programming-challenge-460b8  
+ 
+[debug] [2020-03-28T19:40:11.687Z] <<< HTTP RESPONSE 200
+[info] i  firebase.storage: checking storage.rules for compilation errors...
+[debug] [2020-03-28T19:40:11.690Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/nr-programming-challenge-460b8:test  
+
+[debug] [2020-03-28T19:40:11.919Z] <<< HTTP RESPONSE 200
+[warn] ⚠  [W] undefined:undefined - Ruleset uses old version (version [1]). Please update to the latest version (version [2]).
+[info] ✔  firebase.storage: rules file storage.rules compiled successfully
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[info] i  cloud.firestore: checking firestore.rules for compilation errors...
+[debug] [2020-03-28T19:40:11.937Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/nr-programming-challenge-460b8:test  
+
+[debug] [2020-03-28T19:40:12.158Z] <<< HTTP RESPONSE 200
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully
+[debug] [2020-03-28T19:40:12.161Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "dependencies": {
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "firebase-functions-test": "^0.1.6"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2020-03-28T19:40:12.163Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/nr-programming-challenge-460b8/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2020-03-28T19:40:12.164Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/nr-programming-challenge-460b8/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2020-03-28T19:40:12.547Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T19:40:12.588Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2020-03-28T19:40:12.591Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/nr-programming-challenge-460b8/adminSdkConfig  
+ 
+[debug] [2020-03-28T19:40:12.746Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T19:40:12.748Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/nr-programmingchallenge/versions  
+
+[debug] [2020-03-28T19:40:13.770Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T19:40:13.773Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/nr-programming-challenge-460b8/releases?pageSize=10&pageToken=  
+ 
+[debug] [2020-03-28T19:40:14.035Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T19:40:14.037Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/nr-programming-challenge-460b8/rulesets/2de265fb-ab59-4c66-b684-ddd1416df31c  
+ 
+[debug] [2020-03-28T19:40:14.267Z] <<< HTTP RESPONSE 200
+[info] i  storage: latest version of storage.rules already up to date, skipping upload...
+[debug] [2020-03-28T19:40:14.271Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/nr-programming-challenge-460b8/releases?pageSize=10&pageToken=  
+ 
+[debug] [2020-03-28T19:40:14.271Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/nr-programming-challenge-460b8/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2020-03-28T19:40:14.525Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T19:40:14.526Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/nr-programming-challenge-460b8/rulesets/64b05727-55a1-4449-b963-1f8aeead0348  
+ 
+[debug] [2020-03-28T19:40:14.590Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T19:40:14.591Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/nr-programming-challenge-460b8/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2020-03-28T19:40:14.749Z] <<< HTTP RESPONSE 200
+[info] i  firestore: latest version of firestore.rules already up to date, skipping upload...
+[debug] [2020-03-28T19:40:14.854Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: deployed indexes in firestore.indexes.json successfully
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2020-03-28T19:40:14.859Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/nr-programming-challenge-460b8/configs  
+ 
+[debug] [2020-03-28T19:40:16.158Z] <<< HTTP RESPONSE 200
+[info] i  hosting[nr-programmingchallenge]: beginning deploy...
+[info] i  hosting[nr-programmingchallenge]: found 9 files in dist
+[debug] [2020-03-28T19:40:17.306Z] [hosting] hash cache [ZGlzdA] stored for 9 files
+[debug] [2020-03-28T19:40:17.307Z] [hosting][hash queue][FINAL]
+[debug] [2020-03-28T19:40:17.307Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/nr-programmingchallenge/versions/3df2ae24c45f9161:populateFiles  
+ <request body omitted>
+[debug] [2020-03-28T19:40:17.762Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T19:40:17.769Z] [hosting][populate queue][FINAL]
+[debug] [2020-03-28T19:40:17.770Z] [hosting] uploads queued: 6
