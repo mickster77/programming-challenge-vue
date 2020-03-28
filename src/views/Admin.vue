@@ -24,8 +24,8 @@
 
 <script>
 import db from "@/firebase/init";
-import NewChallenge from "@/components//NewChallenge";
-import ModChallenge from "@/components//ModChallenge";
+import NewChallenge from "@/components/Admin/NewChallenge";
+import ModChallenge from "@/components/Admin/ModChallenge";
 
 export default {
   components: { NewChallenge, ModChallenge },

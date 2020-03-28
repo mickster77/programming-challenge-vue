@@ -12,15 +12,14 @@
 </template>
 
 <script>
-import Leaderboard from "@/components/subcomponents/Leaderboard";
-import Challenges from "@/components/subcomponents/Challenges";
-
+// @ is an alias to /src
+import Leaderboard from "@/components/Sandbox/Leaderboard";
+import Challenges from "@/components/Sandbox/Challenges";
 export default {
-  components: { Leaderboard, Challenges },
   name: "Sandbox",
-  data: () => ({})
+  components: {
+    Leaderboard,
+    Challenges
+  }
 };
 </script>
-
-<style>
-</style>

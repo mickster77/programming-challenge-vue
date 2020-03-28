@@ -124,7 +124,7 @@ export default {
                 })
                 .then(() => {
                   this.$router.push({
-                    name: "Leaderboard"
+                    name: "Home"
                     // params: { uid: firebase.auth().currentUser.uid }
                   });
                 });

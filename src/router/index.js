@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Sandbox from '../views/Sandbox.vue'
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
 import Admin from '../views/Admin'
 import firebase from 'firebase'
 import Submissions from '../views/Submissions.vue'
-import Leaderboard from '../views/Leaderboard.vue'
+import Home from '../views/Home.vue'
 
 
 
@@ -15,21 +15,14 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
-    name: 'Home',
-    component: Home,
+    path: '/sandbox',
+    name: 'Sandbox',
+    component: Sandbox,
     meta: {
       requiresAuth: true,
     },
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // },
+
   {
     path: '/signup',
     name: 'Signup',
@@ -59,13 +52,20 @@ const routes = [
   },
   {
     path: '/',
-    name: 'Leaderboard',
-    component: Leaderboard,
+    name: 'Home',
+    component: Home,
     meta: {
       requiresAuth: true,
     },
   },
-
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // },
 ]
 
 const router = new VueRouter({

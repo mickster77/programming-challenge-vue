@@ -76,7 +76,7 @@ export default {
         })
         .then(() => {
           this.feedback = "submitted";
-          this.$router.push({ name: "Leaderboard" });
+          this.$router.push({ name: "Home" });
         });
     },
     fetchChallenge(id) {

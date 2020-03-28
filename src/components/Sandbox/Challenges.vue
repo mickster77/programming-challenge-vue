@@ -17,7 +17,6 @@
       <v-card-text>
         <v-textarea filled label="Paste code here:" v-model="code"></v-textarea>
       </v-card-text>
-      <SubmissionInput />
       <v-btn @click="submit(challenge.id)" v-show="!loading">Submit</v-btn>
     </v-card>
   </div>
@@ -26,10 +25,8 @@
 <script>
 // import firebase from "firebase";
 import db from "@/firebase/init";
-import SubmissionInput from "@/components/subcomponents/SubmissionInput";
 
 export default {
-  components: { SubmissionInput },
   data() {
     return {
       Challenges: [],

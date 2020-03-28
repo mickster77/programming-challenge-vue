@@ -1,7 +1,7 @@
 <template>
   <v-card dark>
     <v-card-title>Leaderboard</v-card-title>
-    <v-card-text>prop: {{challengeID}}</v-card-text>
+    <!-- <v-card-text>prop: {{challengeID}}</v-card-text> -->
     <v-simple-table>
       <template v-slot:default>
         <thead>
