@@ -2,10 +2,21 @@
   <div class="login container">
     <v-form>
       <v-container>
+        <v-img
+          alt="Director Cup Logo"
+          class="mr-2"
+          contain
+          src="../../assets/director-cup-logos.png"
+          width="400"
+        />
         <h2>Login</h2>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-text-field label="Email" type="email" v-model="email"></v-text-field>
+            <v-text-field
+              label="Email"
+              type="email"
+              v-model="email"
+            ></v-text-field>
           </v-flex>
           <v-flex xs12>
             <v-text-field
@@ -16,7 +27,7 @@
             ></v-text-field>
           </v-flex>
           <v-flex xs12>
-            <p class="red--text feedback" v-if="feedback">{{feedback}}</p>
+            <p class="red--text feedback" v-if="feedback">{{ feedback }}</p>
           </v-flex>
           <v-flex xs12>
             <v-btn @click.prevent="login" color="primary">Submit</v-btn>
@@ -43,7 +54,7 @@ export default {
     return {
       email: null,
       password: null,
-      feedback: null
+      feedback: null,
     };
   },
   methods: {
@@ -79,18 +90,18 @@ export default {
             //   .auth()
             //   .setPersistence(firebase.auth.Auth.Persistence.SESSION).then;
             this.$router.push({
-              name: "Home"
+              name: "Home",
               // params: { uid: firebase.auth().currentUser.uid }
             });
           })
-          .catch(err => {
+          .catch((err) => {
             this.feedback = err.message;
           });
       } else {
         this.feedback = "you need to complete the form";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

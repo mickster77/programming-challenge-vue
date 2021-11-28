@@ -1,27 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Sandbox from '../views/Sandbox.vue'
 import Login from '../views/auth/Login'
 import Signup from '../views/auth/Signup'
 import Admin from '../views/Admin'
 import firebase from 'firebase'
-import Submissions from '../views/Submissions.vue'
 import Home from '../views/Home.vue'
-
-
-
+import Events from '../views/Events.vue'
+import Rosters from '../views/Rosters.vue'
+import Scoreboard from '../views/Scoreboard.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/sandbox',
-    name: 'Sandbox',
-    component: Sandbox,
-    meta: {
-      requiresAuth: true,
-    },
-  },
 
   {
     path: '/signup',
@@ -43,9 +33,25 @@ const routes = [
     },
   },
   {
-    path: '/submissions',
-    name: 'Submissions',
-    component: Submissions,
+    path: '/events',
+    name: 'Events',
+    component: Events,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/rosters',
+    name: 'Rosters',
+    component: Rosters,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/scoreboard',
+    name: 'Scoreboard',
+    component: Scoreboard,
     meta: {
       requiresAuth: true,
     },
@@ -55,7 +61,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
   // {
@@ -97,7 +103,7 @@ router.beforeEach((to, from, next) => {
     // alert("admin only...")
     // let isAdmin = 
     let user = firebase.auth().currentUser
-    if (user.displayName == "micksteradmin" || user.displayName == "mrplants" || user.displayName == "mgann" || user.displayName == "poster515") {
+    if (user.displayName == "mickster" || user.displayName == "mrplants" || user.displayName == "mgann" || user.displayName == "poster515") {
       next()
 
     } else {

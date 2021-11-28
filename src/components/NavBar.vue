@@ -2,6 +2,7 @@
   <div>
     <v-app-bar app color="primary" dark>
       <v-img
+        @click="goHome()"
         alt="Vuetify Logo"
         class="shrink mr-2"
         contain
@@ -9,9 +10,22 @@
         transition="scale-transition"
         width="40"
       />
-      <v-toolbar-title>NR Programming Challenge</v-toolbar-title>
+      <v-toolbar-title>The Director's Cup</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn class="mx-2 hidden-md-and-down" color="secondary" v-if="user" @click="logout">signOut</v-btn>
+      <v-btn
+        class="mx-2 hidden-md-and-down"
+        color="secondary"
+        v-if="true"
+        @click="goTo('admin')"
+        >Admin</v-btn
+      >
+      <v-btn
+        class="mx-2 hidden-md-and-down"
+        color="secondary"
+        v-if="user"
+        @click="logout"
+        >signOut</v-btn
+      >
 
       <v-menu bottom left>
         <template v-slot:activator="{ on }">
@@ -38,13 +52,20 @@ export default {
   components: {},
   data() {
     return {
-      user: null
+      user: null,
       //   imgURL: "https://randomuser.me/api/portraits/lego/1.jpg",
     };
   },
   methods: {
     goHome() {
       this.$router.push({ name: "Home" });
+    },
+    goTo(page) {
+      if (page == "admin") {
+        this.$router.push({
+          name: "Admin",
+        });
+      }
     },
 
     logout() {
@@ -53,7 +74,7 @@ export default {
         .signOut()
         .then(() => {
           this.$router.replace({
-            name: "Login"
+            name: "Login",
           });
         });
     },
@@ -64,20 +85,28 @@ export default {
       } else {
         return null;
       }
-    }
+    },
   },
-  computed: {},
+  computed: {
+    // isAdmin() {
+    //   if (this.user.displayName == "mickster") {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // },
+  },
   created() {
     this.user = firebase.auth().currentUser;
     // this fires everytime there is a change in user status
-    firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
       } else {
         this.user = null;
       }
     });
-  }
+  },
 };
 </script>
 

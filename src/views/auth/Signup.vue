@@ -2,24 +2,112 @@
   <div class="signup container">
     <v-form>
       <v-container>
-        <span>
-          <h2>Signup</h2>
-        </span>
+        <v-row>
+          <v-col>
+            <h2>Signup</h2>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-img
+              lazy-src="@/assets/director-cup-logos.png"
+              src="@/assets/director-cup-logos.png"
+            ></v-img>
+          </v-col>
+        </v-row>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-text-field label="Email" type="email" v-model="email"></v-text-field>
+            <v-text-field
+              label="Email"
+              type="email"
+              v-model="email"
+            ></v-text-field>
           </v-flex>
           <v-flex xs12>
-            <v-text-field label="Password" type="password" v-model="password"></v-text-field>
+            <v-text-field
+              label="Password"
+              type="password"
+              v-model="password"
+            ></v-text-field>
           </v-flex>
           <v-flex xs12>
-            <v-text-field label="UserName" type="text" v-model="userName"></v-text-field>
+            <v-text-field
+              label="UserName"
+              type="text"
+              v-model="userName"
+            ></v-text-field>
           </v-flex>
           <v-flex xs12>
-            <v-text-field label="Name" type="text" v-model="name"></v-text-field>
+            <v-text-field
+              label="Name"
+              type="text"
+              v-model="name"
+            ></v-text-field>
           </v-flex>
+          <v-col align="center" justify="center">
+            <h2>House:</h2>
+            <v-chip-group
+              :active-class="chipColor"
+              column
+              align="center"
+              justify="center"
+            >
+              <v-chip
+                v-for="(item, index) in houses"
+                :key="index"
+                @click="myHouse = item"
+              >
+                {{ item }}
+              </v-chip>
+            </v-chip-group>
+            <v-col
+              align="center"
+              justify="center"
+              v-if="myHouse == 'Questions With Attitude'"
+            >
+              <v-img
+                lazy-src="@/assets/questionswithattitude.png"
+                max-height="100"
+                max-width="100"
+                src="@/assets/questionswithattitude.png"
+              ></v-img>
+            </v-col>
+            <v-col align="center" justify="center" v-if="myHouse == 'Code 390'">
+              <v-img
+                lazy-src="@/assets/code390.png"
+                max-height="100"
+                max-width="100"
+                src="@/assets/code390.png"
+              ></v-img>
+            </v-col>
+
+            <v-col
+              align="center"
+              justify="center"
+              v-if="myHouse == 'The People\'s Team'"
+            >
+              <v-img
+                lazy-src="@/assets/peoplesteam.png"
+                max-height="100"
+                max-width="100"
+                src="@/assets/peoplesteam.png"
+              ></v-img>
+            </v-col>
+            <v-col
+              align="center"
+              justify="center"
+              v-if="myHouse == 'The Unique Concepts'"
+            >
+              <v-img
+                lazy-src="@/assets/uniqueconcepts.png"
+                max-height="100"
+                max-width="100"
+                src="@/assets/uniqueconcepts.png"
+              ></v-img>
+            </v-col>
+          </v-col>
           <v-flex xs12>
-            <p class="red--text feedback" v-if="feedback">{{feedback}}</p>
+            <p class="red--text feedback" v-if="feedback">{{ feedback }}</p>
           </v-flex>
 
           <v-flex xs12>
@@ -52,7 +140,15 @@ export default {
       feedback: null,
       slug: null,
       name: null,
-      userNameTaken: false
+      userNameTaken: false,
+      houses: [
+        "Questions With Attitude",
+        "Code 390",
+        "The People's Team",
+        "The Unique Concepts",
+      ],
+      myHouse: "not set",
+      imageSRC: "src/assets/director-cup-logos.png",
     };
   },
   methods: {
@@ -65,7 +161,7 @@ export default {
         this.slug = slugify(this.userName, {
           replacement: "-",
           remove: /[$*_+~.()'"!\-:@]/g,
-          lower: true
+          lower: true,
         });
 
         // check is the username is taken
@@ -75,7 +171,7 @@ export default {
           .doc(this.slug);
         docRef
           .get()
-          .then(doc => {
+          .then((doc) => {
             if (doc.exists) {
               alert("this username is taken");
               this.userNameTaken = true;
@@ -91,16 +187,16 @@ export default {
               firebase
                 .auth()
                 .createUserWithEmailAndPassword(this.email, this.password)
-                .catch(error =>
+                .catch((error) =>
                   // Handle Errors here.
                   {
                     return (this.feedback = error.message);
                   }
                 )
-                .then(cred => {
+                .then((cred) => {
                   cred.user.updateProfile({
                     displayName: this.slug,
-                    email: this.email
+                    email: this.email,
                   });
                   return firebase
                     .firestore()
@@ -110,7 +206,8 @@ export default {
                       user_name: this.slug,
                       email: cred.user.email,
                       id: cred.user.uid,
-                      name: this.name
+                      name: this.name,
+                      house: this.myHouse,
                     });
                 })
                 .then(() => {
@@ -119,20 +216,37 @@ export default {
                     .collection("User_Names")
                     .doc(this.slug)
                     .set({
-                      user_name: this.slug
+                      user_name: this.slug,
                     });
                 })
                 .then(() => {
                   this.$router.push({
-                    name: "Home"
+                    name: "Home",
                     // params: { uid: firebase.auth().currentUser.uid }
                   });
                 });
             }
           });
       } // end docExisits if
-    } // form validate if
-  } // end signup.
+    }, // form validate if
+  }, // end signup.
+
+  computed: {
+    chipColor() {
+      switch (this.myHouse) {
+        case "Questions With Attitude":
+          return "code390--text";
+        case "Code 390":
+          return "code390--text";
+        case "The Peoples Team":
+          return "code390--text";
+        case "The Unique Concepts":
+          return "code390--text";
+        default:
+          return "red--text";
+      }
+    },
+  },
 };
 </script>
 

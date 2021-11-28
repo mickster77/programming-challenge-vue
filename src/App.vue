@@ -7,9 +7,9 @@
       <router-view></router-view>
     </v-content>
     <v-footer class="mu-2" app color="primary" dark>
-      <span>Website created by Black, Post, & Fitzgerald</span>
+      <span>Version 0.1, built and maintained by the C.A.R.E. team</span>
       <v-spacer></v-spacer>
-      <v-btn @click="changeTheme()" color="secondary">Change Theme</v-btn>
+      <!-- <v-btn @click="changeTheme()" color="secondary">Change Theme</v-btn> -->
     </v-footer>
   </v-app>
 </template>
@@ -25,7 +25,7 @@ export default {
   name: "App",
 
   components: {
-    NavBar
+    NavBar,
     // HelloWorld,
     // Sandbox
   },
@@ -34,7 +34,7 @@ export default {
       if (this.$vuetify.theme.dark == true) {
         this.$vuetify.theme.dark = false;
       } else this.$vuetify.theme.dark = true;
-    }
-  }
+    },
+  },
 };
 </script>

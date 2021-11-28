@@ -3,14 +3,13 @@
 import firebase from 'firebase'
 // tidbits
 const firebaseConfig = {
-    apiKey: "AIzaSyBImaT0czV-OgeMNIzafcaOUVM7hlsaifY",
-    authDomain: "nr-programming-challenge-460b8.firebaseapp.com",
-    databaseURL: "https://nr-programming-challenge-460b8.firebaseio.com",
-    projectId: "nr-programming-challenge-460b8",
-    storageBucket: "nr-programming-challenge-460b8.appspot.com",
-    messagingSenderId: "1044972327010",
-    appId: "1:1044972327010:web:e6e5d6b55be5dd7fcfc13b",
-    measurementId: "G-11XK0YH0GY"
+    apiKey: "AIzaSyCFILP-uSyQEvjp1mqcjadbWCkR0j5iMPw",
+    authDomain: "the-director-s-cup.firebaseapp.com",
+    projectId: "the-director-s-cup",
+    storageBucket: "the-director-s-cup.appspot.com",
+    messagingSenderId: "409428751128",
+    appId: "1:409428751128:web:e8a092dd7ceba08b6fa46d",
+    measurementId: "G-FK4Q4HT3HH"
 };
 
 
